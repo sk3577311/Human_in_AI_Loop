@@ -23,8 +23,24 @@
       "status": "pending",
       "timestamp": 1761806404,
       "answer": null
+    },
+    "req_23": {
+      "id": "req_23",
+      "question": "What is earth?",
+      "caller_id": "dashboard_user",
+      "status": "pending",
+      "timestamp": 1761823703,
+      "answer": null
+    },
+    "req_24": {
+      "id": "req_24",
+      "question": "sefawsfrvarf",
+      "caller_id": "dashboard_user",
+      "status": "pending",
+      "timestamp": 1761823758,
+      "answer": null
     }
   },
   "learned": {},
-  "counter": 23
+  "counter": 25
 }
