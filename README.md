@@ -64,6 +64,14 @@ pip install -r requirements.txt
 # Run backend
 uvicorn main:app --reload
 ```
+## Backend Environment Variables (LiveKit Token)
+
+Before running the backend, create a .env file inside backend/ with the following:
+
+# .env
+LIVEKIT_API_KEY=your_livekit_api_key
+LIVEKIT_API_SECRET=your_livekit_api_secret
+
 3️⃣ Frontend Setup (Next.js)
 ```bash
 # Open a new terminal
@@ -91,3 +99,4 @@ curl -X POST http://127.0.0.1:8000/clear
 
 ### Author
 ### Sameer Khan
+
