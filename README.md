@@ -1,131 +1,93 @@
-# AI Dashboard
+# AI Dashboard: Human-in-the-Loop AI System
 
-A fully interactive AI assistant dashboard simulating real-time AI workflow: question submission → pending requests → resolved → learned answers → voice playback. Built with React (Next.js), Tailwind CSS, and Framer Motion with charts and notifications.
-
----
-
-## **Tech Stack**
-
-- **Frontend:** React + Next.js (Client Components), Tailwind CSS, Framer Motion  
-- **Charts:** Recharts  
-- **Voice Playback:** `SpeechSynthesis` API & backend audio files  
-- **Notifications:** Radix UI Toast (`ToastProvider`)  
-- **Backend:** FastAPI / Node.js (handles `/call`, `/requests`, `/learned`, `/clear`)  
+A full-stack AI Dashboard that simulates an interactive AI assistant capable of learning user responses.  
+- Frontend: Next.js + Recharts + TailwindCSS  
+- Backend: FastAPI + Python  
+- Features: Pending requests, learned answers, real-time updates, voice playback, statistics
 
 ---
 
-## **Project Structure**
+## Features
 
-ai-dashboard/
-├─ app/
-│ └─ dashboard/page.tsx # Main Dashboard page
-├─ components/
-│ ├─ Header.tsx # Dashboard header
-│ ├─ ToastProvider.tsx # Global toast notifications
-│ ├─ RequestCard.tsx # Pending request card
-│ └─ AiCallButton.tsx # Simulate AI call button
-├─ public/ # Static assets
-├─ styles/ # Tailwind styles
-└─ package.json
+- Simulate AI calls directly from the dashboard
+- Track pending and resolved requests
+- Automatic speech synthesis for learned responses
+- Real-time updates every 5 seconds
+- Visual statistics: pie charts and weekly trends
+
 ---
 
-## **Setup & Installation**
+## Project Structure
+/frontendd # Next.js dashboard
+/backend # FastAPI backend
+README.md
+.gitignore
+---
+
+## Requirements
+
+- Node.js ≥ 18
+- Python ≥ 3.10
+- pip / virtualenv
+- Git
+
+---
+
+## Setup Instructions
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/sk3577311/Human_AI_loop/
-cd ai-dashboard
-2️⃣ Install dependencies
-bash
-Copy code
-npm install
-# or
-yarn install
-3️⃣ Set Environment Variables
-Create a .env.local file at the root:
-
-bash
-Copy code
-NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8000
-Running the Project
-1️⃣ Start the Backend
-Make sure your backend server is running (FastAPI/Node.js). Example for FastAPI:
-
-bash
-Copy code
+git clone https://github.com/<your-username>/Human_in_AI_Loop.git
+cd Human_in_AI_Loop
+```
+2️⃣ Backend Setup (FastAPI)
+```
+# Navigate to backend folder
 cd backend
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
-2️⃣ Start the Frontend
-bash
-Copy code
-npm run dev
-# or
-yarn dev
-Open http://localhost:3000 in your browser.
 
-Usage
-Simulate AI Call:
+# Create virtual environment
+python -m venv .venv
 
-Type a question in the input box.
+# Activate virtual environment
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+# Linux/Mac
+source .venv/bin/activate
 
-Click Simulate Call → AI responds if known or adds to Pending.
+# Install dependencies
+pip install --upgrade pip
+pip install fastapi uvicorn
 
-Resolve Requests:
+# If you have requirements.txt
+pip install -r requirements.txt
 
-Go to Pending tab.
+# Run backend
+uvicorn main:app --reload
+```
+3️⃣ Frontend Setup (Next.js)
+```bash
+# Open a new terminal
+cd frontendd
 
-Click Resolve → provide the correct answer → moves to Resolved / Learned.
-
-Learned Answers:
-
-View all previously answered questions.
-
-Re-asking a learned question triggers instant voice response.
-
-Statistics:
-
-Pie chart shows Pending vs Resolved.
-
-Bar chart shows weekly trend.
-
-Clear Data:
-
-Click Clear All Data to reset dashboard.
-
-Features
-✅ Unified AI workflow (simulate → pending → resolved → learned → voice)
-
-✅ Voice playback for resolved/learned answers
-
-✅ Auto-refresh pending/resolved lists every 5 seconds
-
-✅ Toast notifications using Radix UI
-
-✅ Responsive dashboard with gradient buttons and animations
-
-✅ Visual charts for analytics (Pie & Bar)
-
-Commands Cheat Sheet
-bash
-Copy code
 # Install dependencies
 npm install
-yarn install
 
-# Run frontend
+# Run development server
 npm run dev
-yarn dev
+```
+4️⃣ Using the Dashboard
 
-# Run backend (example FastAPI)
-uvicorn main:app --reload --host 127.0.0.1 --port 8000
+1.Open the dashboard in browser: http://localhost:3000
+2. Type a question in “Simulate Call”
+3. Click Send → request appears in Pending Requests
+4. Resolve the request → moves to Learned Answers with voice playback
+5. Check Statistics tab for charts
 
-# Clear all dashboard data
-# Use the "Clear All Data" button in Statistics tab
-Notes
-Make sure NEXT_PUBLIC_BACKEND_URL points to your running backend.
+5️⃣ Clear all data (Optional)
 
-ToastProvider handles all notifications via window.showToast.
+1. Click Clear All Data button in the Statistics tab
+Or via backend:
+curl -X POST http://127.0.0.1:8000/clear
 
-AiCallButton component triggers /call endpoint and plays audio if returned.
-
-Dashboard auto-updates every 5 seconds for real-time experience.
+### Author
+### Sameer Khan
